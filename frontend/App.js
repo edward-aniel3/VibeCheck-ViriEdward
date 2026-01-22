@@ -21,19 +21,19 @@ async function getJSON(url, options = {}) {
 
 document.getElementById("btnFortune").addEventListener("click", async () => {
   const data = await getJSON(`${API_BASE}/api/fortune`);
-  show(data);
+  showMessage(data.fortune);
 });
 
 document.getElementById("btnJoke").addEventListener("click", async () => {
   const data = await getJSON(`${API_BASE}/api/joke`);
-  show(data);
+  showMessage(data.joke);
 });
 
 document.querySelectorAll(".btnMood").forEach(btn => {
   btn.addEventListener("click", async () => {
     const mood = btn.dataset.mood;
     const data = await getJSON(`${API_BASE}/api/vibe?mood=${mood}`);
-    show(data);
+    showMessage(`${data.emoji} ${data.message}`);
   });
 });
 
@@ -45,5 +45,5 @@ document.getElementById("btnSmash").addEventListener("click", async () => {
 
 document.getElementById("btnSecret").addEventListener("click", async () => {
   const data = await getJSON(`${API_BASE}/api/secret?code=411L`);
-  show(data);
+  showMessage(data.message);
 });
