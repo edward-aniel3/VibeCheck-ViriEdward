@@ -21,29 +21,30 @@ async function getJSON(url, options = {}) {
 
 document.getElementById("btnFortune").addEventListener("click", async () => {
   const data = await getJSON(`${API_BASE}/api/fortune`);
-  showMessage(data.fortune);
+  show(data.fortune);
 });
 
 document.getElementById("btnJoke").addEventListener("click", async () => {
   const data = await getJSON(`${API_BASE}/api/joke`);
-  showMessage(data.joke);
+  show(data.joke);
 });
 
 document.querySelectorAll(".btnMood").forEach(btn => {
   btn.addEventListener("click", async () => {
     const mood = btn.dataset.mood;
     const data = await getJSON(`${API_BASE}/api/vibe?mood=${mood}`);
-    showMessage(`${data.emoji} ${data.message}`);
+    show(`${data.emoji} ${data.message}`);
   });
 });
 
 /* 💥 Smash */
 document.getElementById("btnSmash").addEventListener("click", async () => {
-  const data = await getJSON(`${API_BASE}/api/smash`, { method: "POST" });
-  showMessage(`💥 Smash count: ${data.smashes}`);
+  const res = await fetch(`${API_BASE}/api/smash`, { method: "POST" });
+  const data = await res.json();
+  show(`💥 Smash count: ${data.smashes}`);
 });
 
 document.getElementById("btnSecret").addEventListener("click", async () => {
   const data = await getJSON(`${API_BASE}/api/secret?code=411L`);
-  showMessage(data.message);
+  show(data.message);
 });

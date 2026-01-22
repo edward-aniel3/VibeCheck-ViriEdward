@@ -31,12 +31,14 @@ const jokes = [
   "Why did the developer go broke? Because they used up all their cache.",
   "My code has two moods: works or why-is-this-happening.",
   "I told my program a joke... it just threw an exception.",
+  "Why do programmers prefer dark mode? Because light attracts bugs!", // NEW
 ];
 
 const vibeMap = {
   happy: { emoji: "😄", message: "Keep going - you're shipping greatness!" },
   tired: { emoji: "🥱", message: "Hydrate. Stretch. Then commit." },
   stressed: { emoji: "😵‍💫", message: "Breathe. One bug at a time." },
+  angry: { emoji: "😡", message: "Take a deep breath. Don’t rage commit!" }, // NEW
 };
 
 // Smash counter (stored in memory for now)
