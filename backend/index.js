@@ -37,6 +37,7 @@ const vibeMap = {
   happy: { emoji: "😄", message: "Keep going - you're shipping greatness!" },
   tired: { emoji: "🥱", message: "Hydrate. Stretch. Then commit." },
   stressed: { emoji: "😵‍💫", message: "Breathe. One bug at a time." },
+  angry: { emoji: "😡", message: "Take a deep breath. Don’t rage commit!" }, // NEW
 };
 
 // Smash counter (stored in memory for now)

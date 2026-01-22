@@ -17,29 +17,29 @@ async function getJSON(url) {
 
 document.getElementById("btnFortune").addEventListener("click", async () => {
   const data = await getJSON(`${API_BASE}/api/fortune`);
-  show(data);
+  show(data.fortune);
 });
 
 document.getElementById("btnJoke").addEventListener("click", async () => {
   const data = await getJSON(`${API_BASE}/api/joke`);
-  show(data);
+  show(data.joke);
 });
 
 document.querySelectorAll(".btnMood").forEach(btn => {
   btn.addEventListener("click", async () => {
     const mood = btn.dataset.mood;
     const data = await getJSON(`${API_BASE}/api/vibe?mood=${mood}`);
-    show(data);
+    show(`${data.emoji} ${data.message}`);
   });
 });
 
 document.getElementById("btnSmash").addEventListener("click", async () => {
   const res = await fetch(`${API_BASE}/api/smash`, { method: "POST" });
   const data = await res.json();
-  show({ message: "SMASH registered 💥", ...data });
+  show(`💥 Smash count: ${data.smashes}`);
 });
 
 document.getElementById("btnSecret").addEventListener("click", async () => {
   const data = await getJSON(`${API_BASE}/api/secret?code=411L`);
-  show(data);
+  show(data.message);
 });
