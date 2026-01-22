@@ -6,12 +6,16 @@ const out = document.getElementById("out");
 // If your backend runs locally, keep this.
 const API_BASE = "http://localhost:3000";
 
-function show(obj) {
-  out.textContent = typeof obj === "string" ? obj : JSON.stringify(obj, null, 2);
+/**
+ * UI-friendly display
+ * Shows message instead of full JSON
+ */
+function showMessage(msg) {
+  out.textContent = msg;
 }
 
-async function getJSON(url) {
-  const res = await fetch(url);
+async function getJSON(url, options = {}) {
+  const res = await fetch(url, options);
   return res.json();
 }
 
@@ -33,6 +37,7 @@ document.querySelectorAll(".btnMood").forEach(btn => {
   });
 });
 
+/* 💥 Smash */
 document.getElementById("btnSmash").addEventListener("click", async () => {
   const res = await fetch(`${API_BASE}/api/smash`, { method: "POST" });
   const data = await res.json();
